@@ -17,7 +17,7 @@ docker-compose up -d
 
 [Видео инструкция](https://www.loom.com/share/b37d0869b3854b06895e1de4f4a78d2f)
 
-1. Скачиваем расширение [тут](https://github.com/B2BFamily/cp-peugeot-ge/releases/download/v1.0/dist.zip)
+1. Скачиваем расширение [тут](https://github.com/B2BFamily/cp-peugeot-ge/releases/latest/download/dist.zip)
 2. Распаковываем в папку (Важно, внутри папки должны быть уже файлы расширения, а не еще одна папка `dist`)
 3. Открываем в браузере вкладку [chrome://extensions/](chrome://extensions/)
 4. Включаем решим разработчика 

@@ -14,7 +14,11 @@
     },
     "content_scripts": [
         {
-            "matches": ["https://peugeot-club.net/forum/topic/*"],
+            "matches": [
+                "https://peugeot-club.net/forum/topic/*",
+                "http://www.pajero4x4.ru/*",
+                "http://www.passat-club.ru/forum/*"
+            ],
             "js": ["in-content.js"]
         }
     ],

@@ -1,4 +1,4 @@
-var url = 'https://cpf.tadam.ai/peugeot/peugeotClub.umd.min.js';
+var url = 'https://dev.cpf.tadam.ai/peugeot/peugeotClub.umd.min.js';
 
 if (location.host === 'www.pajero4x4.ru')
     url = 'https://dev.cpf.tadam.ai/pajero4x4/pajero4x4.umd.min.js';

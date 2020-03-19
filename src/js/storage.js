@@ -1,5 +1,8 @@
-export const BLOCK_SCRIPT_KEY = 'block-script-url';
-export const DEFAULT_BLOCK_SCRIPT_URL = 'https://cpf.tadam.ai/peugeot/peugeotClub.umd.min.js';
+export const BLACKLIST_KEY = 'blacklist';
+export const DEFAULT_BLACKLIST = [
+    'https://cpf.tadam.ai/peugeot/peugeotClub.umd.min.js',
+    'https://cpf.tadam.ai/passat/passatClub.umd.min.js'
+];
 
 export function storageGet(key) {
     return new Promise((resolve, reject) => {
@@ -26,10 +29,36 @@ export function storageSet(key, value) {
     });
 }
 
-export async function getBlockScriptUrl() {
-    const value = await storageGet(BLOCK_SCRIPT_KEY);
+export async function getBlacklist() {
+    const value = await storageGet(BLACKLIST_KEY);
     if (!value) {
-        return DEFAULT_BLOCK_SCRIPT_URL;
+        return DEFAULT_BLACKLIST;
     }
     return value;
+}
+
+export function setBlacklist(value) {
+    return storageSet(BLACKLIST_KEY, value);
+}
+
+//
+// blocking api callback must be sync, because of that
+// we prepare the blocking value in the global space,
+// and continuously track changes in the storage
+//
+let _currentBlacklist = DEFAULT_BLACKLIST;
+(async () => {
+    _currentBlacklist = await getBlacklist();
+
+    chrome.storage.onChanged.addListener((changes, ns) => {
+        const blacklistChanges = changes[BLACKLIST_KEY];
+        if (blacklistChanges) {
+            _currentBlacklist = blacklistChanges.newValue;
+        }
+    });
+
+})();
+
+export function getBlacklistSync() {
+    return _currentBlacklist;
 }

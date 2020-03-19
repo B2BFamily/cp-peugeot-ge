@@ -1,25 +1,12 @@
-import { getBlockScriptUrl, BLOCK_SCRIPT_KEY } from './storage';
+import { getBlacklistSync } from './storage';
 
-//
-// blocking api callback must be sync, because of that
-// we prepare the blocking value in the global space,
-// and continuously track changes in the storage
-//
-let blockScriptUrl = '';
-(async () => {
-    blockScriptUrl = await getBlockScriptUrl();
-
-    chrome.storage.onChanged.addListener((changes, ns) => {
-        const blockScriptChanges = changes[BLOCK_SCRIPT_KEY];
-        if (blockScriptChanges) {
-            blockScriptUrl = blockScriptChanges.newValue;
-        }
-    });
-
-})();
+function isBlockedUrl(url) {
+    const blacklist = getBlacklistSync();
+    return blacklist.some((x) => x === url);
+}
 
 function blockProductionScript(details) {
-    if (details.url === blockScriptUrl) {
+    if (isBlockedUrl(details.url)) {
         return { cancel: true };
     }
 }

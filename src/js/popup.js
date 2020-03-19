@@ -1,30 +1,29 @@
 import {
-    getBlockScriptUrl,
-    storageSet,
-    BLOCK_SCRIPT_KEY,
-    DEFAULT_BLOCK_SCRIPT_URL
+    getBlacklist,
+    setBlacklist,
+    DEFAULT_BLACKLIST,
 } from './storage';
 
 window.addEventListener('load', async () => {
-    const blockScriptUrl = await getBlockScriptUrl();
+    const blacklist = await getBlacklist();
 
     const view = getView();
-    view.blockScriptInput.value = blockScriptUrl;
+    view.blacklist.value = blacklist.join('\n');
 
     view.saveButton.addEventListener('click', async () => {
-        let value = view.blockScriptInput.value;
+        let value = view.blacklist.value.split('\n');
         if (!value) {
-            value = DEFAULT_BLOCK_SCRIPT_URL;
-            view.blockScriptInput.value = value;
+            value = DEFAULT_BLACKLIST;
+            view.blacklist.value = value.join('\n');
             console.log('invalid value, use default', value);
         }
-        await storageSet(BLOCK_SCRIPT_KEY, value);
+        await setBlacklist(value);
     });
 });
 
 function getView() {
     return {
-        blockScriptInput: document.getElementById('block-script-input'),
+        blacklist: document.getElementById('blacklist'),
         saveButton: document.getElementById('save-button')
     };
 }

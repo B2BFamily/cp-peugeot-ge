@@ -11,13 +11,9 @@ window.addEventListener('load', async () => {
     view.blacklist.value = blacklist.join('\n');
 
     view.saveButton.addEventListener('click', async () => {
-        let value = view.blacklist.value.split('\n');
-        if (!value) {
-            value = DEFAULT_BLACKLIST;
-            view.blacklist.value = value.join('\n');
-            console.log('invalid value, use default', value);
-        }
-        await setBlacklist(value);
+        const value = view.blacklist.value;
+        const newBlacklist = value ? value.split('\n') : [];
+        await setBlacklist(newBlacklist);
     });
 });
 

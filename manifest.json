@@ -2,14 +2,14 @@
     "manifest_version": 2,
     "name": "cp-integrator",
     "version": "0.0.1",
-    "description": "Chrome extension boilerplate, replace all values!",
+    "description": "Integrates Car Pricing widget into a site",
     "icons": {
         "16": "16x16.png",
         "48": "48x48.png",
         "128": "128x128.png"
     },
     "browser_action": {
-        "default_title": "Boilerplate popup!",
+        "default_title": "Car Pricing",
         "default_popup": "popup.html"
     },
     "content_scripts": [

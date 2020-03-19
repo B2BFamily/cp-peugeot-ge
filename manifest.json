@@ -26,10 +26,18 @@
     ],
     "background": {
         "scripts": ["background.js"],
-        "persistent": false
+        "persistent": true
     },
     "content_security_policy":
         "script-src 'self' 'unsafe-eval'; object-src 'self'; img-src * data: 'self' 'unsafe-eval'",
     "offline_enabled": true,
-    "permissions": ["tabs", "<all_urls>", "activeTab"]
+    "permissions": [
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "http://*/",
+        "https://*/",
+        "tabs",
+        "activeTab"
+    ]
 }

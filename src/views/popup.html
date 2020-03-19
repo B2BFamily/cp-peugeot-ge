@@ -1,14 +1,35 @@
 <!doctype html>
 <html style="min-height:auto" >
     <head>
-        <title>chrome-extension-template</title>
+        <title>Cars Pricing Integrator</title>
         <script src="popup.js"></script>
+        <style>
+
+            body {
+                width: 300px;
+                padding: 5px;
+            }
+
+            #save-button {
+                width: 100%;
+                margin-top: 10px;
+            }
+
+            .container {
+                width: 100%;
+            }
+
+            .container input {
+                width: 100%;
+            }
+
+        </style>
     </head>
     <body>
-    </body>
-    <body>
-        <div>
-            <p>Edit this template!</p>
+        <div class="container">
+            <h3>Block production script:</h3>
+            <input id="block-script-input" value=""></input>
         </div>
+        <button id="save-button">Save Changes</button>
     </body>
 </html>

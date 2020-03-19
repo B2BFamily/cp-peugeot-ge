@@ -35,9 +35,14 @@ docker-compose up -d
 ##
 
 ## Вариант 2. Загрузка MVP вручную (Внимание! Это надо будет делать после каждой загрузки страницы!)
-Для этого необходимо ввести в консоль браузера на нужной странице 
+Для этого необходимо ввести в консоль браузера на нужной странице
+### Peugeot
 ```js
-var loadJS=function(e,t){var a=document.createElement("script");a.src=e,t.appendChild(a)};loadJS("https://cpf.tadam.ai/peugeot/peugeotClub.umd.min.js",document.body);
+(function(e,t){var a=document.createElement("script");a.charset="utf-8",a.type="text/javascript",a.type="text/javascript";a.src=e,a.async=!0,t.appendChild(a)})("https://cpf.tadam.ai/peugeot/peugeotClub.umd.min.js",document.body);
+```
+### Passat
+```js
+(function(e,t){var a=document.createElement("script");a.charset="utf-8",a.type="text/javascript",a.src=e,a.async=!0,t.appendChild(a)})("https://cpf.tadam.ai/passat/passatClub.umd.min.js",document.head);
 ```
 
 ### Нужно еще раз увидеть велком?
